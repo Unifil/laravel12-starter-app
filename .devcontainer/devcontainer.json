@@ -1,14 +1,26 @@
 {
   "name": "Laravel Codespace",
-  "build": { "dockerfile": "Dockerfile" },
-  "remoteUser": "root",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // Usuário remoto não-root definido acima
+  "remoteUser": "vscode",
+
   "postCreateCommand": "if [ -f composer.json ]; then composer install && php artisan key:generate; fi && npm install",
+  // Instala dependências PHP e Node após criação do container 
+
   "extensions": [
     "bmewburn.vscode-intelephense-client",
     "mikestead.dotenv",
     "onecentlin.laravel-blade",
     "eamodio.gitlens"
   ],
+  // Extensões recomendadas para Laravel e Git :contentReference[oaicite:6]{index=6}
+
   "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": { "label": "Laravel App" }
+  },
+
   "workspaceFolder": "/workspaces/${localWorkspaceFolder}"
 }
