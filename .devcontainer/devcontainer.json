@@ -1,25 +1,14 @@
 {
-  "name": "Laravel Codespace (PHP 8.4)",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "postCreateCommand": "if [ -f composer.json ]; then composer install && php artisan key:generate; fi && if [ -f package.json ]; then npm install; fi",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "bmewburn.vscode-intelephense-client",
-        "mikestead.dotenv",
-        "onecentlin.laravel-blade",
-        "eamodio.gitlens"
-      ]
-    }
-  },
+  "name": "Laravel Codespace",
+  "build": { "dockerfile": "Dockerfile" },
+  "remoteUser": "root",
+  "postCreateCommand": "if [ -f composer.json ]; then composer install && php artisan key:generate; fi && npm install",
+  "extensions": [
+    "bmewburn.vscode-intelephense-client",
+    "mikestead.dotenv",
+    "onecentlin.laravel-blade",
+    "eamodio.gitlens"
+  ],
   "forwardPorts": [8000],
-  "portsAttributes": {
-    "8000": {
-      "label": "HTTP"
-    }
-  },
-  "workspaceFolder": "/workspaces/${localWorkspaceFolder}",
-  "remoteUser": "vscode"
+  "workspaceFolder": "/workspaces/${localWorkspaceFolder}"
 }
